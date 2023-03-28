@@ -11,7 +11,8 @@ colors = [
     (180, 34, 122),
 ]
 #class figure
-
+#making new branches
+#made new branch 
 class Figure:
     x = 0
     y = 0
