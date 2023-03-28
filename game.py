@@ -1,6 +1,6 @@
 import pygame
 import random
-
+#comment for commit
 colors = [
     (0, 0, 0),
     (120, 37, 179),
