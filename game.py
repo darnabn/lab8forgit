@@ -10,7 +10,7 @@ colors = [
     (180, 34, 22),
     (180, 34, 122),
 ]
-
+#class figure
 
 class Figure:
     x = 0
