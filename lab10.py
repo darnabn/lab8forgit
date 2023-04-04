@@ -1,38 +1,39 @@
 import functools
 
-# Создаем список из нескольких слов
+# Тізім құрастырамыз
 words = ["hello", "world", "python", "programming"]
 
-# Фильтруем слова, которые содержат букву "o"
+# Фильтр о сөзі барларды
 filtered_words = filter(lambda word: 'o' in word, words)
 
-# Создаем множество из ASCII кодов букв, встречающихся в отфильтрованных словах
+#Шыққан сөздерден ASCII кодқа аударамыз
 letters_set = set()
 for word in filtered_words:
     for letter in word:
         letters_set.add(ord(letter))
 
-# Создаем словарь, где ключами являются символы, а значениями - их ASCII коды
+# Сөздік жасаймыз ішіндегі кілттердің мәні сан бірақ ASCII кодта жазылып шығады
 char_dict = {chr(code): code for code in letters_set}
 
-# Создаем список из четных ASCII кодов символов, содержащихся в char_dict
+# Тізім
 even_codes = filter(lambda code: code % 2 == 0, char_dict.values())
 even_chars = [chr(code) for code in even_codes]
 
-# Создаем генератор из пар символ-код, где символы - это буквы, содержащиеся в filtered_words
-char_code_pairs = zip("".join(filtered_words), map(ord, "".join(filtered_words)))
+# Генератор символ-кодты жасаймыз, оның ішінде символдар - әріптер filtered_words-тың ішіндегі
 
-# Функция, которая складывает ASCII коды двух символов
+char_code_pairs = zip("".join(even_chars), map(ord, "".join(even_chars)))
+
+# Екі ASCII кодты қосатың функция
 def sum_ascii_codes(a, b):
     return a + b
 
-# Складываем ASCII коды всех символов, содержащихся в filtered_words
-letters_sum = functools.reduce(sum_ascii_codes, map(ord, "".join(filtered_words)), 0)
+# Барлық символдың кодтарын қосамыз
+letters_sum = functools.reduce(sum_ascii_codes, map(ord, "".join(even_chars)), 0)
 
-# Проверяем, что все символы в even_chars имеют четные ASCII коды
+# even_chars-тың ASCII кодын тексереміз оның барлық символдары жұп екенін
 all_even = all(code % 2 == 0 for code in map(ord, even_chars))
 
-# Получаем следующий символ после последнего символа в char_dict
+# о әріпінен кейінгі әріпті шығарып береді
 next_char = chr(next(iter(char_dict.values()), 0) + len(char_dict))
 
 
